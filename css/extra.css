@@ -1,3 +1,31 @@
+/* Use navigation bar color for emphasized words */
 .emphasis{
 	color:#2c3e50;
+}
+
+/* Resize and center images */
+.small{
+	height:180px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* Resize columns to fit four */
+.col-sm-4{
+	width:25%;
+}
+
+/* Centered text in nav bar color  */
+.type_text{
+	color:#2c3e50;
+	text-align:center;
+}
+
+/* Center text */
+.center{
+	text-align:center;
+}
+
+.nocaps{
+	text-transform:none;
 }
