@@ -56,3 +56,12 @@
 .mailer:hover{
 	color:#18bc9c;
 }
+
+.frontLink{
+	color:white;
+}
+.frontLink:hover{
+	text-decoration:underline;
+	color:white;
+}
+	
