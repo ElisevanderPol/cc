@@ -26,6 +26,55 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+        /**
+        * Removes previous feedback message and posts a new one
+        * Also provides basic frontend e-mail validation
+        **/
+        function formSubmit(flag){
+            var confirm = document.getElementById('confirm');
+            var wrong = document.getElementById('wrong');
+            
+            // Remove old feedback, if it is present.
+            if(confirm) {
+                confirm.parentNode.removeChild(confirm);
+            }
+            if(wrong) {
+                wrong.parentNode.removeChild(wrong);
+            }
+
+            // Create HTML to append to div
+            var text = "<div id='confirm' style='color:black;'>Je reactie is ontvangen!</div>";
+            var errorText = "<div id='wrong' style='color:red'>Sorry, dat lijkt niet op een e-mailadres!</div>"
+            
+            // Get user's emailaddress
+            var userInput = document.forms['emailform']['entry.1057991613'].value;
+
+            // using http://www.w3schools.com/js/js_form_validation.asp
+            var posAt = userInput.indexOf("@");
+            var posDot = userInput.lastIndexOf(".");
+
+            /**
+            * Check if:
+            * - @ is not first character
+            * - There are at least two characters between @ and the last dot
+            * - There are at least two characters following the last dot 
+            * If userInput fails one of these, an error is appended
+            * If userInput passes all of them, a confirmation is appended
+            **/
+            if(posAt < 1 || posDot < posAt+2 || posDot+2 > userInput.length) {
+                var div = document.getElementById(flag);
+                div.innerHTML = div.innerHTML + errorText;
+                return false;
+            }
+            else {
+                var div = document.getElementById(flag);
+                div.innerHTML = div.innerHTML + text;
+                return true;
+            }
+            
+        }
+    </script>
 
 </head>
 
@@ -183,22 +232,37 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Hoe het werkt</h2>
+                <h2>Blijf op de hoogte</h2>
                 <hr class="star-primary">
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-lg-offset-2">
-                <p>Er zijn genoeg tutorials te vinden om te leren programmeren, maar waar moet je beginnen? En hoe hou je jezelf gemotiveerd? Bij Code Cult werk je samen.</p>
-            </div>
-            <div class="col-lg-4">
-                <p>Of je nou vast zit of gewoon even je laatste creatie wilt delen. Bij Code Cult zit je samen met andere programmeurs die altijd geïnteresseerd zijn.</p>
-            </div>
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <p>Kies je eigen pad. Niet iedereen wil dezelfde dingen maken en het is dus belangrijk om er zelf achter te komen wat je leuk vindt</p>
-                <a href="projects/item.html" class="btn btn-lg btn-outline">
-                    <i class="fa fa-link"></i> Kies je eigen pad!
-                </a>
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+            <p class="baseOther">Coden is een <span class="emphasis">sport</span> en je leert het beste als je het <span class="emphasis">samen</span> doet.<p>
+                <script type="text/javascript">var submitted=false;</script>
+                <iframe name="hidden_iframe" id="hidden_iframeDown" style="display:none;" onload="if(submitted) {formSubmit('form')}"></iframe>
+                <form name ="emailform" action="https://docs.google.com/a/perceptum.nl/forms/d/11UB1z2JayydEu9qy-8rjQMNs6JRn76t-L4ZZWj8oADA/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true">
+                    <div role="list">
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item jfk-scrollbar ss-item-required ss-text">
+                                <div class="ss-form-entry">
+                                    <label aria-hidden="true" class="ss-q-item-label" for="entry_1057991613">
+                                        <div class="ss-q-title">E-mail
+                                            <label for="itemView.getDomIdToLabel()" aria-label="(Verplicht veld)"></label>
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+                                    <input type="text" name="entry.1057991613" placeholder="ik@voorbeeld.nl" class="ss-q-short" id="entry_1057991613" dir="auto" aria-label="E-mail  " aria-required="true" required="" title="">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="draftResponse" value="[,,&quot;1836563596584766178&quot;]">
+                        <input type="hidden" name="pageHistory" value="0">
+                        <input type="hidden" name="fromEmail" value="false">
+                        <input type="hidden" name="fbzx" value="1836563596584766178">
+                        <span id="form"><input type="submit" name="submit" value="Verzenden" id="ss-submit"></span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
