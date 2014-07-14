@@ -33,3 +33,26 @@
 .nocaps{
 	text-transform:none;
 }
+
+#form{
+        border-radius:3px;
+        -webkit-box-shadow:none;
+	box-shadow:none;
+}
+
+.normal{
+	font-weight:normal;
+	text-transform:none;
+}
+
+.imgBorder{
+	border-width:5px;
+	border-color:white;
+}
+
+.mailer{
+	color:white;
+}
+.mailer:hover{
+	color:#18bc9c;
+}
